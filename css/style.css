@@ -1,0 +1,903 @@
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('fonts/khmer-font.woff2') format('woff2'), 
+       url('fonts/khmer-font.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Base Body Style */
+body {
+  width: 25%;
+  margin: auto;
+  border: #cd8b06 5px double;
+}
+
+/* Responsive Overrides for Body and Wedding About */
+@media screen and (max-width: 991px) {
+  body,
+  .weddingAbout {
+    width: 100%;
+    border: none;
+  }
+}
+
+/* Video Background */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 25%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  /* Fixed invalid opacity value; set between 0 and 1 if needed */
+  opacity: 1; 
+}
+
+@media screen and (max-width: 1024px) {
+  .video-bg {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .video-bg {
+    width: 100%;
+    object-position: center; 
+  }
+}
+
+/* Logo & Decorative Components */
+.logo-container {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.wedding-logo {
+  width: 80px;
+  height: auto;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  animation: fadeInDown 2s ease;
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 10px rgba(230, 167, 42, 0.6));
+}
+
+.kbach_khmer {
+  width: 30%;
+}
+
+/* Invitation Header Image Container */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+/* Merged Style Text Classes */
+.style_text {
+  font-family: "Moulpali", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.style_text_1 {
+  font-family: "Dangrek", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  font-style: normal;
+}
+
+.style_text_2 {
+  font-family: "Battambang", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .style_text {
+    font-size: 1.8rem;
+  }
+  .style_text_2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Spinner */
+#spinner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-out, visibility 0s linear 0.5s;
+  z-index: 99999;
+}
+
+#spinner.show {
+  transition: opacity 0.8s ease-out, visibility 0s linear 0s;
+  visibility: visible;
+  opacity: 1;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  z-index: 99;
+}
+
+/* Buttons */
+.btn {
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+.btn-square { width: 32px; height: 32px; }
+.btn-sm-square { width: 34px; height: 34px; }
+.btn-md-square { width: 44px; height: 44px; }
+.btn-lg-square { width: 56px; height: 56px; }
+
+.btn-square,
+.btn-sm-square,
+.btn-md-square,
+.btn-lg-square {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.btn-primary-outline-0 {
+  color: var(--bs-white) !important;
+  border: 1px solid var(--bs-primary);
+}
+
+.btn-light-outline-0 {
+  color: var(--bs-primary) !important;
+  border: 1px solid var(--bs-light);
+}
+
+.btn-primary-outline-0:hover {
+  background: var(--bs-secondary) !important;
+  color: var(--bs-white) !important;
+  border: 1px solid var(--bs-primary);
+}
+
+.btn-light-outline-0:hover {
+  background: var(--bs-primary) !important;
+  color: var(--bs-white) !important;
+  border: 1px solid var(--bs-secondary);
+}
+
+.img-border {
+  border-color: var(--bs-secondary);
+  border-style: double;
+}
+
+.display-1, .display-2, .display-3, 
+.display-4, .display-5, .display-6 {
+  font-family: "Great Vibes", cursive;
+  font-weight: 700;
+}
+
+.vireak ul li {
+  font-size: 16px;
+  text-align: center;
+}
+
+.responsive-bg-img {
+  position: absolute;
+  bottom: -200px;
+  width: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Khmer Typography Classes */
+.khmer-title {
+  font-family: "Moul", serif;
+  color: #cd8b06;
+}
+
+.khmer-schedule {
+  font-family: "Battambang", cursive;
+  color: #cd8b06;
+}
+
+.day-header {
+  font-family: "Moul", serif;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.schedule-item {
+  margin-bottom: 5px;
+  font-size: 15px;
+  list-style: none;
+}
+
+.battambang-thin {
+  font-family: "Battambang", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Navbar */
+.sticky-top {
+  transition: 0.5s;
+  background: var(--bs-white);
+}
+
+.navbar .navbar-nav .nav-link {
+  padding: 10px 15px;
+  font-family: "Petit Formal Script", cursive;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.5s;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active,
+.sticky-top.bg-white .navbar .navbar-nav .nav-link:hover,
+.sticky-top.bg-white .navbar .navbar-nav .nav-link.active {
+  color: var(--bs-primary);
+}
+
+@media (min-width: 1200px) {
+  .navbar .navbar-collapse .border-top {
+    border-top: none !important;
+  }
+}
+
+/* Carousel */
+.carousel-item {
+  position: relative;
+  min-height: 100vh;
+}
+
+.carousel-item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-item .carousel-caption {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  background-size: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 0;
+}
+
+.carousel-control-prev .carousel-control-prev-icon,
+.carousel-control-next .carousel-control-next-icon {
+  background: transparent;
+}
+
+#carouselId .carousel-indicators {
+  padding-bottom: 30px;
+}
+
+#carouselId .carousel-indicators li {
+  border: 10px solid var(--bs-white);
+  border-width: 10px 5px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+#carouselId .carousel-indicators li.active {
+  background: var(--bs-primary);
+  border-color: var(--bs-primary);
+  border-width: 10px 15px;
+}
+
+/* Wedding Story */
+.story .story-timeline,
+.story .story-timeline .row {
+  position: relative;
+}
+
+.story .story-timeline::before,
+.story .story-timeline::after {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: var(--bs-secondary);
+  border-radius: 10px;
+  left: 50%;
+  top: -7px;
+  transform: translateX(-50%);
+}
+
+.story .story-timeline::after {
+  top: auto;
+  bottom: -7px;
+}
+
+.story .story-timeline .row::after {
+  position: absolute;
+  content: "\f004";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--bs-secondary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+  .story .story-timeline::before,
+  .story .story-timeline::after,
+  .story .story-timeline .row::after {
+    display: none;
+  }
+}
+
+/* Wedding Date Section */
+.wedding-date-bg {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+}
+
+.wedding-date-bg .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.wedding-date-bg .wedding-date {
+  position: relative;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4)),
+              url(../images/prewedding/p7.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.wedding-date-bg .wedding-date-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wedding-date-bg .wedding-date::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.wedding-date-bg .wedding-date-content .d-inline-block {
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+@media (max-width: 576px) {
+  .wedding-timeline .wedding-content .heart-circle {
+    display: none;
+  }
+}
+
+/* Gallery */
+.gallery .gallery-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery .gallery-img .hover-style {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+}
+
+.gallery .gallery-img:hover .hover-style {
+  width: auto;
+  height: auto;
+  border: 600px solid rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+
+.gallery .gallery-img img {
+  transition: 0.5s;
+}
+
+.gallery .gallery-img:hover img {
+  transform: scale(1.3);
+}
+
+.gallery .gallery-item .gallery-overlay {
+  transition: 0.5s;
+}
+
+.gallery .gallery-item:hover .gallery-overlay {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.gallery .gallery-img .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  opacity: 0;
+  z-index: 2;
+}
+
+.gallery .gallery-img:hover .search-icon {
+  opacity: 1;
+}
+
+/* Team */
+.team .team-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.team .team-item .team-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: 0.5s;
+  z-index: 4;
+  text-align: center;
+}
+
+.team .team-item:hover .team-content {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.team .team-item .team-social {
+  position: absolute;
+  top: -180px;
+  right: 15px;
+  z-index: 5;
+  transition: 0.5s;
+}
+
+.team .team-item:hover .team-social {
+  top: 15px;
+}
+
+.team .team-item .team-img {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--bs-secondary);
+  border-style: double;
+}
+
+.team .team-item .team-img .team-img-main {
+  position: relative;
+  z-index: 3;
+}
+
+.team .team-item .team-img .team-img-main img,
+.team .team-item .team-img .team-img-bg img {
+  transition: 0.5s;
+}
+
+.team .team-item:hover .team-img .team-img-main img,
+.team .team-item:hover .team-img .team-img-bg img {
+  transform: scale(1.1);
+}
+
+/* RSVP & Footer */
+.RSVP-form {
+  background: linear-gradient(rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.2));
+  object-fit: cover;
+}
+
+.footer {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url(../img/footer-bg.jpg) center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer .footer-item a.btn-link,
+.footer .footer-item p {
+  line-height: 35px;
+  font-size: 17px;
+  color: var(--bs-light);
+  transition: 0.5s;
+}
+
+.footer .footer-item a.btn-link:hover {
+  color: var(--bs-primary);
+  letter-spacing: 2px;
+}
+
+@media (max-width: 992px) {
+  .footer .text-start,
+  .footer .text-center,
+  .footer .text-end {
+    text-align: center !important;
+  }
+}
+
+.copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bs-dark) !important;
+}
+
+/* Album & Grid Styles */
+.album-img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.album-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.img-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.contact {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-family: "Calibri", sans-serif;
+  color: #475521;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.contact i {
+  font-size: 18px;
+  color: #475521;
+}
+
+.contact a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.rowss {
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Call to Action Button Section */
+.button-container {
+  position: fixed;
+  bottom: 130px;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+}
+
+.invite-text {
+  color: #e6a72a;
+  font-family: "Moul", sans-serif;
+  margin-bottom: 50px;
+  font-size: 1.3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.khmer-wedding-btn {
+  text-decoration: none;
+  padding: 15px 35px;
+  font-family: "Moul", sans-serif;
+  font-size: 14px;
+  color: #ffffff !important;
+  background: linear-gradient(180deg, #ffd500 0%, #d89000 50%, #ffd500 100%);
+  clip-path: polygon(
+    8% 0%,
+    92% 0%,
+    100% 30%,
+    100% 70%,
+    92% 100%,
+    8% 100%,
+    0% 70%,
+    0% 30%
+  );
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Animations */
+@keyframes goldGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(230, 167, 42, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(230, 167, 42, 0.8), 1px 1px 2px #000;
+  }
+}
+
+.refined-animation {
+  animation: goldGlow 2s ease-in-out infinite;
+}
+
+
+/* ចលនាព្រិលបាត់ (Fade Out) នៃផ្ទាំងទី ១ */
+#coverPage {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1;
+  position: relative;
+  z-index: 9999;
+}
+
+#coverPage.fade-out {
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
+}
+
+/* ចលនាបង្ហាញចេញ (Fade In) នៃផ្ទាំងទី ២ */
+#mainContent {
+  transition: opacity 0.8s ease;
+  opacity: 1;
+}
+
+/* Style និងចលនា Pulsing សម្រាប់ប៊ូតុង "សូមចុចដើម្បីបើកសំបុត្រ" */
+#openInvitationBtn {
+  background: linear-gradient(135deg, #e6a72a 0%, #ffd700 100%);
+  color: #1a1a1a !important;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  padding: 12px 30px !important;
+  font-family: 'Moul', serif;
+  font-size: 15px;
+  box-shadow: 0 4px 15px rgba(230, 167, 42, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse-glow 2s infinite;
+}
+
+#openInvitationBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(230, 167, 42, 0.7);
+  background: linear-gradient(135deg, #ffd700 0%, #e6a72a 100%);
+}
+
+#openInvitationBtn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Animation ញាក់/បញ្ចេញពន្លឺតិចៗលើប៊ូតុងដើម */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(230, 167, 42, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(230, 167, 42, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(230, 167, 42, 0);
+  }
+}
+
+/* Card Frame ព័ទ្ធជុំវិញផ្ទាំងទី២ ឱ្យនៅចំកណ្ដាល */
+.wedding-card-wrapper {
+    max-width: 480px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border: 4px solid #e6a72a;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* ចលនា Fade-out សម្រាប់ Cover Page */
+#coverPage {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 1;
+}
+
+#coverPage.fade-out {
+    opacity: 0;
+    transform: scale(0.98);
+    pointer-events: none;
+}
+
+
+
+#coverPage {
+    opacity: 1;
+    transform: scale(1);
+    /* កំណត់ទំហំពេលវេលា 1 វិនាទីឱ្យវាបាត់ទៅវិញបែបស្រទន់ */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Class ពេលចុចប៊ូតុង ឱ្យ Cover Page រលត់បាត់បែបស្រទន់ */
+#coverPage.fade-soft {
+    opacity: 0;
+    transform: scale(1.3); /* រីកធំបន្តិចបែបស្រទន់មុនពេលបាត់ */
+    pointer-events: none;
+}
+
+/* ផ្ទាំង Main Content (ផ្ទាំងទី ២) */
+#mainContent {
+    opacity: 0;
+    /* កំណត់ទំហំពេលវេលា 1.2 វិនាទីឱ្យវាបង្ហាញឡើងបែបស្រទន់ */
+    transition: opacity 1.2s ease-in-out;
+}
+
+/* Class ពេលផ្ទាំងទី ២ លោតចេញមកបែប Smooth */
+#mainContent.fade-in-soft {
+    opacity: 1;
+}
+
+@font-face {
+    font-family: 'AKbalthom Moul 1';
+    src: url('../fonts/AKbalthom Moul 1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* កំណត់ Animation សម្រាប់ស្រមោលរលកៗ */
+@keyframes undulatingGlow {
+  0% {
+    /* ស្រមោលដំបូង - ច្បាស់បន្តិច */
+    text-shadow: 
+      0 0 10px rgba(230, 167, 42, 0.8), /* ពន្លឺមាសចាំងជុំវិញ */
+      2px 3px 5px rgba(0, 0, 0, 0.9);   /* ស្រមោលខ្មៅឱ្យលេច */
+  }
+  50% {
+    /* ស្រមោលពេលរីកធំ - ព្រាល និងភ្លឺខ្លាំងជាងមុន (បង្កើត Effect រលក) */
+    text-shadow: 
+      0 0 20px rgba(255, 215, 0, 0.9), /* ពណ៌មាសភ្លឺជាងមុន */
+      0 0 30px rgba(230, 167, 42, 0.6), /* រីកធំជាងមុន */
+      2px 3px 5px rgba(0, 0, 0, 0.9);   /* រក្សាស្រមោលខ្មៅ */
+  }
+  100% {
+    /* ត្រឡប់មកសភាពដើមវិញ */
+    text-shadow: 
+      0 0 10px rgba(230, 167, 42, 0.8),
+      2px 3px 5px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* ហៅ Animation មកប្រើជាមួយអក្សរ */
+.wedding-title-glow {
+  /* ឈ្មោះ animation | រយៈពេល | ល្បឿនលោត | ចំនួនដង (infinite = រហូត) */
+  animation: undulatingGlow 3s ease-in-out infinite;
+  
+  /* ធានាថា AOS ដើរស្របគ្នា */
+  transition: text-shadow 0.5s ease; 
+}
+
+/* បង្កើត Animation សម្រាប់ស្រមោលរលកៗចាំងពណ៌មាស */
+@keyframes goldGlowWave {
+  0% {
+    text-shadow: 
+      0 0 8px rgba(230, 167, 42, 0.7),
+      0 0 15px rgba(255, 215, 0, 0.5),
+      2px 3px 5px rgba(0, 0, 0, 0.9);
+  }
+  50% {
+    text-shadow: 
+      0 0 18px rgba(255, 215, 0, 0.95),
+      0 0 30px rgba(230, 167, 42, 0.8),
+      2px 3px 5px rgba(0, 0, 0, 0.9);
+  }
+  100% {
+    text-shadow: 
+      0 0 8px rgba(230, 167, 42, 0.7),
+      0 0 15px rgba(255, 215, 0, 0.5),
+      2px 3px 5px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* ភ្ជាប់ Animation ទៅកាន់ Class */
+.wedding-glow-text {
+  animation: goldGlowWave 3s ease-in-out infinite;
+}
+
+@font-face {
+  font-family: 'AKbalthom Moul 1';
+  src: url('../fonts/akbalthom-moul.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
